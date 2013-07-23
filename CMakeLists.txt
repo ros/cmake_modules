@@ -3,7 +3,7 @@ project(cmake_modules)
 
 find_package(catkin REQUIRED)
 
-catkin_package(CFG_EXTRAS cmake_modules-extras.develspace.cmake)
+catkin_package(CFG_EXTRAS cmake_modules-extras.cmake)
 
 ## Install all cmake files
 install(DIRECTORY cmake/modules/
