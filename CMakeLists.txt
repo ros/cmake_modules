@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(cmake_modules)
 
+find_package(catkin REQUIRED)
+
 catkin_package(CFG_EXTRAS cmake_modules-extras.develspace.cmake)
 
 ## Install all cmake files
