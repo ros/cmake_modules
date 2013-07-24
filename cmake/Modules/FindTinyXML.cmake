@@ -45,6 +45,8 @@ include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(TinyXML DEFAULT_MSG TinyXML_LIBRARY
                                                       TinyXML_INCLUDE_DIR)
 
+set(TinyXML_FOUND ${TINYXML_FOUND})
+
 if(TinyXML_FOUND)
   set(TinyXML_INCLUDE_DIRS ${TinyXML_INCLUDE_DIR})
   set(TinyXML_LIBRARIES ${TinyXML_LIBRARY})
