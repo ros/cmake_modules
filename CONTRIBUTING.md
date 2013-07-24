@@ -19,3 +19,9 @@ When contributing a new cmake module for this package, please follow these guide
  - `<PackageName>_LIBRARIES`
  - It may provide other variables but they must be documented at the top of the module file.
 - The module must provide documentation for each variable it sets and give an example of usage
+
+You can see the CMake recommendation for these modules here:
+
+http://cmake.org/gitweb?p=cmake.git;a=blob;f=Modules/readme.txt
+
+You should also strive to keep the `PackageName` in `Find<PackageName>.cmake`'s case consistent in the CMake variables. For instance, `FindTinyXML.cmake` should be found like this: `find_package(TinyXML REQUIRED)` and produce variables like `TinyXML_FOUND`.
