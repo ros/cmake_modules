@@ -1,4 +1,4 @@
-# Contributing a new CMake Module
+## Contributing a new CMake Module
 
 First of all lets talk about the difference in a CMake module and a CMake config.
 
