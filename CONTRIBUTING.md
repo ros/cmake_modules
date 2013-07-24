@@ -26,4 +26,4 @@ You can see the CMake recommendation for these modules here:
 
 http://cmake.org/gitweb?p=cmake.git;a=blob;f=Modules/readme.txt
 
-You should also strive to keep the `PackageName` in `Find<PackageName>.cmake`'s case consistent in the CMake variables. For instance, `FindTinyXML.cmake` should be found like this: `find_package(TinyXML REQUIRED)` and produce variables like `TinyXML_FOUND`.
+You should also strive to keep the `PackageName` in `Find<PackageName>.cmake`'s case consistent in the CMake variables. For example, `FindTinyXML.cmake` should be found with a command like `find_package(TinyXML REQUIRED)` and should produce variables like `TinyXML_FOUND`.
