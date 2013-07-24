@@ -10,7 +10,7 @@ message("TinyXML_INCLUDE_DIRS: ${TinyXML_INCLUDE_DIRS}")
 message("TinyXML_LIBRARIES: ${TinyXML_LIBRARIES}")
 
 catkin_package(
-  # INCLUDE ${TinyXML_INCLUDE_DIRS}  # Include this is one of your headers uses a header from TinyXML_INCLUDE_DIRS
+  # INCLUDE ${TinyXML_INCLUDE_DIRS}  # Include this if one of your headers uses a header from TinyXML_INCLUDE_DIRS
   # LIBRARIES ${TinyXML_LIBRARIES}  # Include this if people who link against you need to link against TinyXML too
   # # OR
   # DEPENDS TinyXML  # Use this if you would use both of the above lines
