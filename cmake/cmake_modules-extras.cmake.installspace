@@ -1,0 +1,2 @@
+# Prepend the installed cmake modules to the cmake module path
+set(CMAKE_MODULE_PATH ${CATKIN_PACKAGE_SHARE_DESTINATION}/cmake/Modules ${CMAKE_MODULE_PATH})
