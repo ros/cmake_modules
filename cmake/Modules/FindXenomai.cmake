@@ -37,13 +37,23 @@ if( UNIX )
       get_filename_component(Xenomai_ROOT_DIR ${Xenomai_INCLUDE_DIR} PATH)
       set( Xenomai_INCLUDE_POSIX_DIR ${Xenomai_ROOT_DIR}/include/posix )
     endif()
+
+    # get xenomai version
+    execute_process(COMMAND ${Xenomai_ROOT_DIR}/bin/xeno-config --version OUTPUT_VARIABLE Xenomai_VERSION)
     
     # find the xenomai pthread library
     find_library( Xenomai_LIBRARY_NATIVE  native  ${Xenomai_ROOT_DIR}/lib )
     find_library( Xenomai_LIBRARY_XENOMAI xenomai ${Xenomai_ROOT_DIR}/lib )
     find_library( Xenomai_LIBRARY_PTHREAD_RT pthread_rt rtdm ${Xenomai_ROOT_DIR}/lib )
     find_library( Xenomai_LIBRARY_RTDM    rtdm    ${Xenomai_ROOT_DIR}/lib )
-    find_library( Xenomai_LIBRARY_RTDK    rtdk    ${Xenomai_ROOT_DIR}/lib )
+
+    # In 2.6.0 RTDK was merged into the main xenomai library
+    if(Xenomai_VERSION VERSION_GREATER 2.6.0)
+      set(Xenomai_LIBRARY_RTDK_FOUND ${Xenomai_LIBRARY_XENOMAI_FOUND})
+      set(Xenomai_LIBRARY_RTDK ${Xenomai_LIBRARY_XENOMAI})
+    else()
+      find_library( Xenomai_LIBRARY_RTDK    rtdk    ${Xenomai_ROOT_DIR}/lib )
+    endif()
 
     set(Xenomai_LIBRARIES_NATIVE ${Xenomai_LIBRARY_NATIVE} ${Xenomai_LIBRARY_XENOMAI} pthread)
     set(Xenomai_LIBRARIES_POSIX ${Xenomai_LIBRARY_PTHREAD_RT} ${Xenomai_LIBRARY_XENOMAI} pthread rt)
