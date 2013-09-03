@@ -8,13 +8,53 @@
 # http://www.cisst.org/cisst/license.txt.
 # 
 # --- end cisst license ---
+#
+# CMake script for finding Xenomai
 # 
-# TODO: Add "COMPONENTS" interface
+# Input variables:
+# 
+# - ${Xenomai_ROOT_DIR} (optional): Used as a hint to find the Xenomai root dir
+# - $ENV{XENOMAI_ROOT_DIR} (optional): Used as a hint to find the Xenomai root dir
+#
+# Cache variables:
+#
+# - Xenomai_ROOT_DIR
+# - Xenomai_INCLUDE_DIR
+#
+# Output Variables:
+#
+# - Xenomai_FOUND / XENOMAI_FOUND: Boolean that indicates if the package was found
+# - Xenomai_INCLUDE_DIRS: Paths to the ncessary header files
+# - Xenomai_DEFINITIONS: Additional clfags that should be used when using this package
+# - Xenomai_LIBRARY_DIRS: Paths to the ncessary libraries
+# - Xenomai_LIBRARIES: All of the possible Xenomai libraries
+#
+# - Xenomai_VERSION: major.minor.patch Xenomai version string
+# - Xenomai_XENO_CONFIG: Path to xeno-config program
+#
+# - Xenomai_LIBRARY_XENOMAI
+# - Xenomai_LIBRARY_NATIVE
+# - Xenomai_LIBRARY_PTHREAD_RT
+# - Xenomai_LIBRARY_RTDM
+# - Xenomai_LIBRARY_RTDK ( deprecated after Xenomai 2.6.0)
+# 
+# - Xenomai_LIBRARIES_NATIVE
+# - Xenomai_LIBRARIES_POSIX
+#
+# - Xenomai_LDFLAGS_NATIVE
+# - Xenomai_LDFLAGS_POSIX
+#
+# - Xenomai_DEFINITIONS_POSIX: Same as Xenomai_DEFINITIONS
+# - Xenomai_INCLUDE_DIR: Same as Xenomai_INCLUDE_DIRS
+# 
+# TODO: 
+#
+# - Add "COMPONENTS" interface for various usage modes
 
 if( UNIX )
 
   # set the search paths
-  set( Xenomai_SEARCH_PATH /usr/local /usr $ENV{XENOMAI_ROOT_DIR})
+  set( Xenomai_SEARCH_PATH /usr/local /usr $ENV{XENOMAI_ROOT_DIR} ${Xenomai_ROOT_DIR})
   
   # find xeno_config.h
   find_path( Xenomai_INCLUDE_DIR
@@ -30,16 +70,19 @@ if( UNIX )
     # set the root directory
     if( "${Xenomai_INCLUDE_DIR}" MATCHES "/usr/include/xenomai" )
       # on ubuntu linux, xenomai install is not rooted to a single dir
-      set( Xenomai_ROOT_DIR /usr)
+      set( Xenomai_ROOT_DIR /usr CACHE PATH "The Xenomai FHS root")
       set( Xenomai_INCLUDE_POSIX_DIR ${Xenomai_INCLUDE_DIR}/posix )
     else()
       # elsewhere, xenomai install is packaged
-      get_filename_component(Xenomai_ROOT_DIR ${Xenomai_INCLUDE_DIR} PATH)
+      get_filename_component(Xenomai_ROOT_DIR ${Xenomai_INCLUDE_DIR} PATH CACHE)
       set( Xenomai_INCLUDE_POSIX_DIR ${Xenomai_ROOT_DIR}/include/posix )
     endif()
 
+    # Find xeno-config
+    find_program(Xenomai_XENO_CONFIG NAMES xeno-config  PATHS ${Xenomai_ROOT_DIR}/bin NO_DEFAULT_PATH)
+
     # get xenomai version
-    execute_process(COMMAND ${Xenomai_ROOT_DIR}/bin/xeno-config --version OUTPUT_VARIABLE Xenomai_VERSION)
+    execute_process(COMMAND ${Xenomai_XENO_CONFIG} --version OUTPUT_VARIABLE Xenomai_VERSION)
     
     # find the xenomai pthread library
     find_library( Xenomai_LIBRARY_NATIVE  native  ${Xenomai_ROOT_DIR}/lib )
@@ -57,9 +100,6 @@ if( UNIX )
 
     set(Xenomai_LIBRARIES_NATIVE ${Xenomai_LIBRARY_NATIVE} ${Xenomai_LIBRARY_XENOMAI} pthread)
     set(Xenomai_LIBRARIES_POSIX ${Xenomai_LIBRARY_PTHREAD_RT} ${Xenomai_LIBRARY_XENOMAI} pthread rt)
-
-    # Find xeno-config
-    find_program(Xenomai_XENO_CONFIG NAMES xeno-config  PATHS ${Xenomai_ROOT_DIR}/bin NO_DEFAULT_PATH)
 
     # Linker flags for the posix wrappers
     set(Xenomai_LDFLAGS_NATIVE "")#"-lnative -lxenomai -lpthread -lrt")
