@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.0 (2013-12-04)
+------------------
 * Added FindTBB.cmake version r36 from the findtbb package
 * TinyXML: Add more comprehensive header documentation.
 
