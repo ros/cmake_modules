@@ -1,4 +1,4 @@
-# (C) Copyright 2005-2013 Johns Hopkins University (JHU), All Rights
+# (C) Copyright 2005-2014 Johns Hopkins University (JHU), All Rights
 # Reserved.
 #
 # --- begin cisst license - do not edit ---
@@ -10,6 +10,12 @@
 # --- end cisst license ---
 #
 # CMake script for finding Xenomai
+#
+# This will find Xenomai on Linux systems and define flags for each of the
+# supported Xenomai "skins". The current supported skins are:
+#
+# - NATIVE
+# - POSIX
 # 
 # Input variables:
 # 
@@ -19,39 +25,42 @@
 # Cache variables:
 #
 # - Xenomai_ROOT_DIR
-# - Xenomai_INCLUDE_DIR
+# - Xenomai_INCLUDE_DIRS
 #
 # Output Variables:
 #
-# - Xenomai_FOUND / XENOMAI_FOUND: Boolean that indicates if the package was found
-# - Xenomai_INCLUDE_DIRS: Paths to the ncessary header files
-# - Xenomai_DEFINITIONS: Additional clfags that should be used when using this package
-# - Xenomai_LIBRARY_DIRS: Paths to the ncessary libraries
-# - Xenomai_LIBRARIES: All of the possible Xenomai libraries
-#
+# - Xenomai_FOUND: Boolean that indicates if the package was found
 # - Xenomai_VERSION: major.minor.patch Xenomai version string
 # - Xenomai_XENO_CONFIG: Path to xeno-config program
 #
-# - Xenomai_LIBRARY_XENOMAI
-# - Xenomai_LIBRARY_NATIVE
-# - Xenomai_LIBRARY_PTHREAD_RT
-# - Xenomai_LIBRARY_RTDM
-# - Xenomai_LIBRARY_RTDK ( deprecated after Xenomai 2.6.0)
+# - Individual library variables:
+#   - Xenomai_LIBRARY_XENOMAI
+#   - Xenomai_LIBRARY_NATIVE
+#   - Xenomai_LIBRARY_PTHREAD_RT
+#   - Xenomai_LIBRARY_RTDM
+#   - Xenomai_LIBRARY_RTDK ( deprecated after Xenomai 2.6.0)
+#
+# - Native Flags:
+#   - Xenomai_NATIVE_DEFINITIONS
+#   - Xenomai_NATIVE_INCLUDE_DIRS
+#   - Xenomai_NATIVE_LIBRARY_DIRS
+#   - Xenomai_NATIVE_LIBRARIES
+#   - Xenomai_NATIVE_LDFLAGS
 # 
-# - Xenomai_LIBRARIES_NATIVE
-# - Xenomai_LIBRARIES_POSIX
-#
-# - Xenomai_LDFLAGS_NATIVE
-# - Xenomai_LDFLAGS_POSIX
-#
-# - Xenomai_DEFINITIONS_POSIX: Same as Xenomai_DEFINITIONS
-# - Xenomai_INCLUDE_DIR: Same as Xenomai_INCLUDE_DIRS
-# 
-# TODO: 
-#
-# - Add "COMPONENTS" interface for various usage modes
+# - POSIX Flags:
+#   - Xenomai_POSIX_DEFINITIONS
+#   - Xenomai_POSIX_INCLUDE_DIRS
+#   - Xenomai_POSIX_LIBRARY_DIRS
+#   - Xenomai_POSIX_LIBRARIES
+#   - Xenomai_POSIX_LDFLAGS
 
 if( UNIX )
+
+  # Get hint from environment variable (if any)
+  if(NOT $ENV{XENOMAI_ROOT_DIR} STREQUAL "")
+    set(XENOMAI_ROOT_DIR $ENV{XENOMAI_ROOT_DIR} CACHE PATH "Xenomai base directory location (optional, used for nonstandard installation paths)" FORCE)
+    mark_as_advanced(XENOMAI_ROOT_DIR)
+  endif()
 
   # set the search paths
   set( Xenomai_SEARCH_PATH /usr/local /usr $ENV{XENOMAI_ROOT_DIR} ${Xenomai_ROOT_DIR})
@@ -85,35 +94,40 @@ if( UNIX )
     execute_process(COMMAND ${Xenomai_XENO_CONFIG} --version OUTPUT_VARIABLE Xenomai_VERSION)
     
     # find the xenomai pthread library
-    find_library( Xenomai_LIBRARY_NATIVE  native  ${Xenomai_ROOT_DIR}/lib )
-    find_library( Xenomai_LIBRARY_XENOMAI xenomai ${Xenomai_ROOT_DIR}/lib )
-    find_library( Xenomai_LIBRARY_PTHREAD_RT pthread_rt rtdm ${Xenomai_ROOT_DIR}/lib )
-    find_library( Xenomai_LIBRARY_RTDM    rtdm    ${Xenomai_ROOT_DIR}/lib )
+    find_library( Xenomai_LIBRARY_NATIVE     native     ${Xenomai_ROOT_DIR}/lib )
+    find_library( Xenomai_LIBRARY_XENOMAI    xenomai    ${Xenomai_ROOT_DIR}/lib )
+    find_library( Xenomai_LIBRARY_PTHREAD_RT pthread_rt ${Xenomai_ROOT_DIR}/lib )
+    find_library( Xenomai_LIBRARY_RTDM       rtdm       ${Xenomai_ROOT_DIR}/lib )
 
     # In 2.6.0 RTDK was merged into the main xenomai library
     if(Xenomai_VERSION VERSION_GREATER 2.6.0)
       set(Xenomai_LIBRARY_RTDK_FOUND ${Xenomai_LIBRARY_XENOMAI_FOUND})
       set(Xenomai_LIBRARY_RTDK ${Xenomai_LIBRARY_XENOMAI})
     else()
-      find_library( Xenomai_LIBRARY_RTDK    rtdk    ${Xenomai_ROOT_DIR}/lib )
+      find_library( Xenomai_LIBRARY_RTDK rtdk ${Xenomai_ROOT_DIR}/lib )
     endif()
 
-    set(Xenomai_LIBRARIES_NATIVE ${Xenomai_LIBRARY_NATIVE} ${Xenomai_LIBRARY_XENOMAI} pthread)
-    set(Xenomai_LIBRARIES_POSIX ${Xenomai_LIBRARY_PTHREAD_RT} ${Xenomai_LIBRARY_XENOMAI} pthread rt)
+    # Xenomai libraries for each skin
+    set(Xenomai_NATIVE_LIBRARIES ${Xenomai_LIBRARY_NATIVE} ${Xenomai_LIBRARY_XENOMAI} pthread)
+    set(Xenomai_POSIX_LIBRARIES ${Xenomai_LIBRARY_PTHREAD_RT} ${Xenomai_LIBRARY_XENOMAI} pthread rt)
 
-    # Linker flags for the posix wrappers
-    set(Xenomai_LDFLAGS_NATIVE "")#"-lnative -lxenomai -lpthread -lrt")
-    set(Xenomai_LDFLAGS_POSIX "-Wl,@${Xenomai_ROOT_DIR}/lib/posix.wrappers")#-lpthread_rt -lxenomai -lpthread -lrt")
+    # Xenomai LDFLAGS for each skin
+    set(Xenomai_NATIVE_LDFLAGS "")
+    set(Xenomai_POSIX_LDFLAGS "-Wl,@${Xenomai_ROOT_DIR}/lib/posix.wrappers")
 
-    # add compile/preprocess options
-    set(Xenomai_DEFINITIONS -D_GNU_SOURCE -D_REENTRANT -pipe -D__XENO__)
-    set(Xenomai_DEFINITIONS_POSIX ${Xenomai_DEFINITIONS})
+    # Xenomai compiler definitions for each supported skin
+    set(Xenomai_NATIVE_DEFINITIONS -D_GNU_SOURCE -D_REENTRANT -D__XENO__)
+    set(Xenomai_POSIX_DEFINITIONS ${Xenomai_NATIVE_DEFINITIONS})
 
-    # set the library dirs
-    set( Xenomai_LIBRARY_DIRS ${Xenomai_ROOT_DIR}/lib )
+    # Xenomai library dirs for each skin
+    set( Xenomai_NATIVE_LIBRARY_DIRS ${Xenomai_ROOT_DIR}/lib )
+    set( Xenomai_POSIX_LIBRARY_DIRS ${Xenomai_NATIVE_LIBRARY_DIRS} )
+
+    # Xenomai library dirs for each skin
+    set( Xenomai_NATIVE_INCLUDE_DIRS ${Xenomai_INCLUDE_DIR} )
+    set( Xenomai_POSIX_INCLUDE_DIRS ${Xenomai_INCLUDE_DIR} ${Xenomai_INCLUDE_POSIX_DIR} )
 
     # Compatibility
-    set( Xenomai_INCLUDE_DIRS ${Xenomai_INCLUDE_DIR})
     set( Xenomai_LIBRARIES 
       ${Xenomai_LIBRARY_XENOMAI}
       ${Xenomai_LIBRARY_NATIVE}
@@ -123,7 +137,7 @@ if( UNIX )
       )
 
   else( )
-    MESSAGE(STATUS "xenomai NOT found. (${Xenomai_SEARCH_PATH})")
+    MESSAGE(STATUS "Xenomai NOT found in paths: (${Xenomai_SEARCH_PATH})")
   endif( )
 
 endif( UNIX )
@@ -132,12 +146,10 @@ include(FindPackageHandleStandardArgs)
 
 find_package_handle_standard_args(Xenomai DEFAULT_MSG
   Xenomai_ROOT_DIR
+  Xenomai_INCLUDE_DIR
   Xenomai_LIBRARY_NATIVE
   Xenomai_LIBRARY_XENOMAI
   Xenomai_LIBRARY_PTHREAD_RT
   Xenomai_LIBRARY_RTDM
   Xenomai_LIBRARY_RTDK
   )
-
-# Compatibilitiy
-set( Xenomai_FOUND ${XENOMAI_FOUND} )
