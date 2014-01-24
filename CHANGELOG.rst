@@ -2,6 +2,11 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Adding CMake module for finding Xenomai RT kernel patch build flags
+* Contributors: Jonathan Bohren, William Woodall
+
 0.2.0 (2013-12-04)
 ------------------
 * Added FindTBB.cmake version r36 from the findtbb package
