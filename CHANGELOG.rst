@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.1 (2014-01-24)
+------------------
 * Adding CMake module for finding Xenomai RT kernel patch build flags
 * Contributors: Jonathan Bohren, William Woodall
 
