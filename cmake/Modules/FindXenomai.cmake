@@ -29,7 +29,8 @@
 #
 # Output Variables:
 #
-# - Xenomai_FOUND: Boolean that indicates if the package was found
+# - Xenomai_FOUND: Boolean that indicates if the package was found. See the
+#   Xenomai_*_FOUND variables below for individual skins.
 # - Xenomai_VERSION: major.minor.patch Xenomai version string
 # - Xenomai_XENO_CONFIG: Path to xeno-config program
 #
@@ -38,9 +39,10 @@
 #   - Xenomai_LIBRARY_NATIVE
 #   - Xenomai_LIBRARY_PTHREAD_RT
 #   - Xenomai_LIBRARY_RTDM
-#   - Xenomai_LIBRARY_RTDK ( deprecated after Xenomai 2.6.0)
+#   - Xenomai_LIBRARY_RTDK ( this will be empty, deprecated after Xenomai 2.6.0)
 #
 # - Native Flags:
+#   - Xenomai_NATIVE_FOUND: Boolean that indicates if the native skin was found
 #   - Xenomai_NATIVE_DEFINITIONS
 #   - Xenomai_NATIVE_INCLUDE_DIRS
 #   - Xenomai_NATIVE_LIBRARY_DIRS
@@ -48,11 +50,20 @@
 #   - Xenomai_NATIVE_LDFLAGS
 # 
 # - POSIX Flags:
+#   - Xenomai_POSIX_FOUND: Boolean that indicates if the posix skin was found
 #   - Xenomai_POSIX_DEFINITIONS
 #   - Xenomai_POSIX_INCLUDE_DIRS
 #   - Xenomai_POSIX_LIBRARY_DIRS
 #   - Xenomai_POSIX_LIBRARIES
 #   - Xenomai_POSIX_LDFLAGS
+#
+# - RTDM Flags:
+#   - Xenomai_RTDM_FOUND: Boolean that indicates if the RTDM skin was found
+#   - Xenomai_RTDM_DEFINITIONS
+#   - Xenomai_RTDM_INCLUDE_DIRS
+#   - Xenomai_RTDM_LIBRARY_DIRS
+#   - Xenomai_RTDM_LIBRARIES
+#   - Xenomai_RTDM_LDFLAGS
 
 if( UNIX )
 
@@ -110,22 +121,27 @@ if( UNIX )
     # Xenomai libraries for each skin
     set(Xenomai_NATIVE_LIBRARIES ${Xenomai_LIBRARY_NATIVE} ${Xenomai_LIBRARY_XENOMAI} pthread)
     set(Xenomai_POSIX_LIBRARIES ${Xenomai_LIBRARY_PTHREAD_RT} ${Xenomai_LIBRARY_XENOMAI} pthread rt)
+    set(Xenomai_RTDM_LIBRARIES ${Xenomai_LIBRARY_RTDM} ${Xenomai_LIBRARY_XENOMAI} pthread rt)
 
     # Xenomai LDFLAGS for each skin
     set(Xenomai_NATIVE_LDFLAGS "")
     set(Xenomai_POSIX_LDFLAGS "-Wl,@${Xenomai_ROOT_DIR}/lib/posix.wrappers")
+    set(Xenomai_RTDM_LDFLAGS "")
 
     # Xenomai compiler definitions for each supported skin
     set(Xenomai_NATIVE_DEFINITIONS -D_GNU_SOURCE -D_REENTRANT -D__XENO__)
     set(Xenomai_POSIX_DEFINITIONS ${Xenomai_NATIVE_DEFINITIONS})
+    set(Xenomai_RTDM_DEFINITIONS ${Xenomai_NATIVE_DEFINITIONS})
 
     # Xenomai library dirs for each skin
     set( Xenomai_NATIVE_LIBRARY_DIRS ${Xenomai_ROOT_DIR}/lib )
     set( Xenomai_POSIX_LIBRARY_DIRS ${Xenomai_NATIVE_LIBRARY_DIRS} )
+    set( Xenomai_RTDM_LIBRARY_DIRS ${Xenomai_NATIVE_LIBRARY_DIRS} )
 
     # Xenomai library dirs for each skin
     set( Xenomai_NATIVE_INCLUDE_DIRS ${Xenomai_INCLUDE_DIR} )
     set( Xenomai_POSIX_INCLUDE_DIRS ${Xenomai_INCLUDE_DIR} ${Xenomai_INCLUDE_POSIX_DIR} )
+    set( Xenomai_RTDM_INCLUDE_DIRS ${Xenomai_INCLUDE_DIR} )
 
     # Compatibility
     set( Xenomai_LIBRARIES 
@@ -147,9 +163,22 @@ include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Xenomai DEFAULT_MSG
   Xenomai_ROOT_DIR
   Xenomai_INCLUDE_DIR
-  Xenomai_LIBRARY_NATIVE
   Xenomai_LIBRARY_XENOMAI
-  Xenomai_LIBRARY_PTHREAD_RT
-  Xenomai_LIBRARY_RTDM
   Xenomai_LIBRARY_RTDK
   )
+
+if(Xenomai_LIBRARY_XENOMAI AND Xenomai_LIBRARY_NATIVE) 
+  message(STATUS "Xenomai Native skin found")
+  set(Xenomai_NATIVE_FOUND True)
+endif()
+  
+if(Xenomai_LIBRARY_XENOMAI AND Xenomai_LIBRARY_PTHREAD_RT) 
+  message(STATUS "Xenomai POSIX skin found")
+  set(Xenomai_POSIX_FOUND True)
+endif()
+  
+if(Xenomai_LIBRARY_XENOMAI AND Xenomai_LIBRARY_RTDM) 
+  message(STATUS "Xenomai RTDM skin found")
+  set(Xenomai_RTDM_FOUND True)
+endif()
+  
