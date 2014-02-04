@@ -10,6 +10,7 @@
 # Redistribution and use is allowed according to the terms of the 2-clause BSD
 # license.
 # 
+# 
 # Input variables:
 # 
 # - EIGEN_ROOT (optional): When specified, header files and libraries
@@ -24,7 +25,6 @@
 # Cache variables (not intended to be used in CMakeLists.txt files)
 # 
 # - Eigen_INCLUDE_DIR: Absolute path to package headers.
-# - Eigen_LIBRARY: Absolute path to the library.
 # 
 # 
 # Output variables:
@@ -32,6 +32,7 @@
 # - Eigen_FOUND: Boolean that indicates if the package was found
 # - Eigen_INCLUDE_DIRS: Paths to the necessary header files
 # - Eigen_VERSION: Version of Eigen library found
+# - Eigen_DEFINITIONS: Definitions to be passed on behalf of eigen
 # 
 # 
 # Example usage:
@@ -42,6 +43,8 @@
 #   if(NOT Eigen_FOUND)
 #     # Error handling
 #   endif()
+#   ...
+#   add_definitions(${Eigen_DEFINITIONS})
 #   ...
 #   include_directories(${Eigen_INCLUDE_DIRS} ...)
 # 
@@ -73,3 +76,4 @@ endif(EIGEN_FOUND)
 set(Eigen_INCLUDE_DIRS ${EIGEN_INCLUDE_DIRS})
 set(Eigen_FOUND ${EIGEN_FOUND})
 set(Eigen_VERSION ${EIGEN_VERSION})
+set(Eigen_DEFINITIONS ${EIGEN_DEFINITIONS})
