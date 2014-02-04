@@ -13,14 +13,14 @@
 # 
 # Input variables:
 # 
-# - EIGEN_ROOT (optional): When specified, header files and libraries
-#	will be searched for in `${EIGEN_ROOT}/include` and
-# 	`${EIGEN_ROOT}/libs` respectively, and the default CMake search order
-#	will be ignored. When unspecified, the default CMake search order is used.
+# - Eigen_ROOT_DIR (optional): When specified, header files and libraries
+#   will be searched for in `${Eigen_ROOT_DIR}/include` and
+#   `${Eigen_ROOT_DIR}/libs` respectively, and the default CMake search order
+#   will be ignored. When unspecified, the default CMake search order is used.
 #   This variable can be specified either as a CMake or environment variable.
-#	If both are set, preference is given to the CMake variable.
+#   If both are set, preference is given to the CMake variable.
 #   Use this variable for finding packages installed in a nonstandard location,
-#	or for enforcing that one of multiple package installations is picked up.
+#   or for enforcing that one of multiple package installations is picked up.
 # 
 # Cache variables (not intended to be used in CMakeLists.txt files)
 # 
@@ -38,7 +38,7 @@
 # Example usage:
 # 
 #   # Passing the version means Eigen_FOUND will only be TRUE if a
-#	# version >= the provided version is found.
+#   # version >= the provided version is found.
 #   find_package(Eigen 3.1.2)
 #   if(NOT Eigen_FOUND)
 #     # Error handling
@@ -56,7 +56,9 @@ set(EIGEN_DEFINITIONS ${PC_EIGEN_CFLAGS_OTHER})
 
 
 find_path(EIGEN_INCLUDE_DIR Eigen/Core
-    HINTS ${PC_EIGEN_INCLUDEDIR} ${PC_EIGEN_INCLUDE_DIRS} "${EIGEN_ROOT}" "$ENV{EIGEN_ROOT}"
+    HINTS ${PC_EIGEN_INCLUDEDIR} ${PC_EIGEN_INCLUDE_DIRS}
+          "${Eigen_ROOT_DIR}" "$ENV{EIGEN_ROOT_DIR}"
+          "${EIGEN_ROOT}" "$ENV{EIGEN_ROOT}"  # Backwards Compatibility
     PATHS "$ENV{PROGRAMFILES}/Eigen" "$ENV{PROGRAMW6432}/Eigen"
           "$ENV{PROGRAMFILES}/Eigen 3.0.0" "$ENV{PROGRAMW6432}/Eigen 3.0.0"
     PATH_SUFFIXES eigen3 include/eigen3 include)
