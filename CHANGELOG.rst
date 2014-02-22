@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.3.0 (2014-02-22)
+------------------
 * Added Numpy CMake module
 * Added Eigen CMake module
   closed `#10 <https://github.com/ros/cmake_modules/issues/10>`_
