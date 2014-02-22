@@ -2,6 +2,15 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added Numpy CMake module
+* Added Eigen CMake module
+  closed `#10 <https://github.com/ros/cmake_modules/issues/10>`_
+* Removed use of absolute paths in extra files
+  fixed `#9 <https://github.com/ros/cmake_modules/issues/9>`_
+* Contributors: Vincent Rabaud, William Woodall
+
 0.2.1 (2014-01-24)
 ------------------
 * Adding CMake module for finding Xenomai RT kernel patch build flags
