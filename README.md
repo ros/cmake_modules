@@ -30,7 +30,7 @@ OR by `find_package`'ing it directly:
 find_package(cmake_modules REQUIRED)
 ```
 
-After the above `find_package` invocations, the modules provided by cmake_modules will be available in your CMAKE_MODULE_PATH to be found. For example you can find Eigen by using the following. 
+After the above `find_package` invocations, the modules provided by cmake_modules will be available in your CMAKE_MODULE_PATH to be found. For example you can find Eigen by using the following:
 
 ```cmake
 find_package(Eigen REQUIRED)
