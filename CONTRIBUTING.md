@@ -34,7 +34,7 @@ You should also strive to keep the `PackageName` in `Find<PackageName>.cmake`'s 
 
 A complete description of the recommended convention for writing CMake modules can be found here:
 
-http://cmake.org/gitweb?p=cmake.git;a=blob_plain;f=Modules/readme.txt
+http://www.cmake.org/cmake/help/v3.0/manual/cmake-developer.7.html#find-modules
 
 ## Long term contribution
 
