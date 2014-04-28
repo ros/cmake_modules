@@ -1,5 +1,7 @@
 cmake_modules
 =============
+ <img src="http://upload.wikimedia.org/wikipedia/commons/0/0a/Cmake.jpg" alt="CMake Logo" align="left" width="160"/>
+
 
 A common repository for CMake Modules which are not distributed with CMake but are commonly used by ROS packages.
 
