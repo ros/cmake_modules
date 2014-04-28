@@ -3,6 +3,9 @@ cmake_modules
 
 A common repository for CMake Modules which are not distributed with CMake but are commonly used by ROS packages.
 
+This makes it alot easier to include external package in catkins build system in ROS, for example OpenCV.
+
+
 See the CONTRIBUTING.md file in this repository before submitting pull requests for new modules.
 
 Usage
