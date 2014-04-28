@@ -1,7 +1,5 @@
 cmake_modules
 =============
- <img src="http://upload.wikimedia.org/wikipedia/commons/0/0a/Cmake.jpg" alt="CMake Logo" align="left" width="160"/>
-
 
 A common repository for CMake Modules which are not distributed with CMake but are commonly used by ROS packages.
 
@@ -16,11 +14,9 @@ Supports
 -----
 1. [**Eigen**](http://eigen.tuxfamily.org/index.php?title=Main_Page) is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
 2. [**NumPy**](http://www.numpy.org/) is the fundamental package for scientific computing with Python.
-3. [**OpenCV**](http://opencv.org/) is a library of programming functions mainly aimed at real-time computer vision.
-4. [**PCL**](http://pointclouds.org/) is a standalone, large scale, open project for 2D/3D image and point cloud processing.
-5. [**TBB**](https://www.threadingbuildingblocks.org/) lets you easily write parallel C++ programs that take full advantage of multicore performance.
-6. [**TinyXML**](http://www.grinninglizard.com/tinyxml/) is a simple, small, C++ XML parser.
-7. [**Xenomai**](http://www.xenomai.org/) is a real-time development framework cooperating with the Linux kernel.
+3. [**TBB**](https://www.threadingbuildingblocks.org/) lets you easily write parallel C++ programs that take full advantage of multicore performance.
+4. [**TinyXML**](http://www.grinninglizard.com/tinyxml/) is a simple, small, C++ XML parser.
+5. [**Xenomai**](http://www.xenomai.org/) is a real-time development framework cooperating with the Linux kernel.
 
 
 
@@ -63,14 +59,6 @@ find_package(Eigen REQUIRED)
 ##### NumPY
 ```cmake
 find_package(NUMPY REQUIRED)
-```
-##### OpenCV
-```cmake
-find_package(OpenCV REQUIRED)
-```
-##### PCL
-```cmake
-find_package(PCL REQUIRED)
 ```
 ##### TBB
 ```cmake
