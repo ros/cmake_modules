@@ -17,7 +17,7 @@ Supports
 3. [**OpenCV**](http://opencv.org/) is a library of programming functions mainly aimed at real-time computer vision.
 4. [**PCL**](http://pointclouds.org/) is a standalone, large scale, open project for 2D/3D image and point cloud processing.
 5. [**TBB**](https://www.threadingbuildingblocks.org/) lets you easily write parallel C++ programs that take full advantage of multicore performance.
-6. [**TinyXML**](http://www.grinninglizard.com/tinyxml/) is a simple, small, C++ XML parser
+6. [**TinyXML**](http://www.grinninglizard.com/tinyxml/) is a simple, small, C++ XML parser.
 7. [**Xenomai**](http://www.xenomai.org/) is a real-time development framework cooperating with the Linux kernel.
 
 
