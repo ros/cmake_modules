@@ -3,7 +3,22 @@ cmake_modules
 
 A common repository for CMake Modules which are not distributed with CMake but are commonly used by ROS packages.
 
+This makes it alot easier to include external package in catkins build system in ROS, for example OpenCV.
+
+
 See the CONTRIBUTING.md file in this repository before submitting pull requests for new modules.
+
+
+
+Supports
+-----
+1. [**Eigen**](http://eigen.tuxfamily.org/index.php?title=Main_Page) is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
+2. [**NumPy**](http://www.numpy.org/) is the fundamental package for scientific computing with Python.
+3. [**TBB**](https://www.threadingbuildingblocks.org/) lets you easily write parallel C++ programs that take full advantage of multicore performance.
+4. [**TinyXML**](http://www.grinninglizard.com/tinyxml/) is a simple, small, C++ XML parser.
+5. [**Xenomai**](http://www.xenomai.org/) is a real-time development framework cooperating with the Linux kernel.
+
+
 
 Usage
 -----
@@ -35,3 +50,28 @@ After the above `find_package` invocations, the modules provided by `cmake_modul
 ```cmake
 find_package(Eigen REQUIRED)
 ```
+
+### Lookup sheet
+##### Eigen
+```cmake
+find_package(Eigen REQUIRED)
+```
+##### NumPY
+```cmake
+find_package(NUMPY REQUIRED)
+```
+##### TBB
+```cmake
+find_package(TBB REQUIRED)
+```
+##### TinyXML
+```cmake
+find_package(TinyXML REQUIRED)
+```
+##### Xenomai
+```cmake
+find_package(Xenomai REQUIRED)
+```
+
+
+
