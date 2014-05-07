@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.3.1 (2014-05-07)
+------------------
 * Export architecture_independent flag in package.xml
 * Fix extended CMAKE_MODULE_PATH variable when path contains spaces
 * Mention the sequencing reqirement with an example
