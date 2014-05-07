@@ -2,6 +2,13 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Export architecture_independent flag in package.xml
+* Fix extended CMAKE_MODULE_PATH variable when path contains spaces
+* Mention the sequencing reqirement with an example
+* Contributors: Dirk Thomas, Paul Mathieu, Scott K Logan, Tully Foote, William Woodall, phuicy
+
 0.3.0 (2014-02-22)
 ------------------
 * Added Numpy CMake module
