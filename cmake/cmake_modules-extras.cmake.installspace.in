@@ -1,2 +1,2 @@
-# Prepend the installed cmake modules to the cmake module path
-list(INSERT CMAKE_MODULE_PATH 0 "${cmake_modules_DIR}/../../../@CATKIN_PACKAGE_SHARE_DESTINATION@/cmake/Modules")
+# Append the installed cmake modules to the cmake module path
+list(APPEND CMAKE_MODULE_PATH "${cmake_modules_DIR}/../../../@CATKIN_PACKAGE_SHARE_DESTINATION@/cmake/Modules")
