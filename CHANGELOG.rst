@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.3.2 (2014-10-27)
+------------------
 * Added CMake module for finding the UUID libraries
 * Changed prepend of CMAKE_MODULE_PATH to append behaviour in order to allow prepending of external CMake modules.
 * Added CMake module for finding GSL
