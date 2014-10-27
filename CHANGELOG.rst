@@ -2,6 +2,13 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added CMake module for finding the UUID libraries
+* Changed prepend of CMAKE_MODULE_PATH to append behaviour in order to allow prepending of external CMake modules.
+* Added CMake module for finding GSL
+* Contributors: Esteve Fernandez, Peter Lehner, William Woodall, v01d
+
 0.3.1 (2014-05-07)
 ------------------
 * Export architecture_independent flag in package.xml
