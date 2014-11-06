@@ -166,6 +166,8 @@ find_package_handle_standard_args(Xenomai DEFAULT_MSG
   Xenomai_LIBRARY_XENOMAI
   Xenomai_LIBRARY_RTDK
   )
+  
+set(Xenomai_FOUND ${XENOMAI_FOUND}) # Set appropriately cased variable
 
 if(Xenomai_LIBRARY_XENOMAI AND Xenomai_LIBRARY_NATIVE) 
   message(STATUS "Xenomai Native skin found")
