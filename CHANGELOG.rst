@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.3.3 (2014-12-23)
+------------------
 * Added FindPoco.cmake, which migrated from the ros/class_loader repository.
 * Update to FindXenomai.cmake
   find_package_handle_standard_args generates all caps variables (XENOMAI_FOUND), while this script is expected to create Xenomai_FOUND.
