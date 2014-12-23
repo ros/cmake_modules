@@ -2,6 +2,14 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added FindPoco.cmake, which migrated from the ros/class_loader repository.
+* Update to FindXenomai.cmake
+  find_package_handle_standard_args generates all caps variables (XENOMAI_FOUND), while this script is expected to create Xenomai_FOUND.
+  This changeset creates the appropriately cased variable, but does not unset the all-caps variant for backwards-compatibility reasons (I typically unset it on new modules).
+* Contributors: Adolfo Rodriguez Tsouroukdissian, Esteve Fernandez, William Woodall
+
 0.3.2 (2014-10-27)
 ------------------
 * Added CMake module for finding the UUID libraries
