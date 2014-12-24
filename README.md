@@ -5,6 +5,21 @@ A common repository for CMake Modules which are not distributed with CMake but a
 
 See the CONTRIBUTING.md file in this repository before submitting pull requests for new modules.
 
+ROS Distros
+-----------
+
+This repository has branches for minor releases (`0.2-devel`, `0.3-devel`, `0.4-devel`, etc...) and they map to specific ROS distributions like so:
+
+- `0.2-devel`:
+ - ROS Groovy
+- `0.3-devel`:
+ - ROS Hydro
+ - ROS Indigo
+- `0.4-devel`:
+ - ROS Jade
+
+This mapping will be kept up-to-date in the `README.md` on the default branch.
+
 Provided Modules
 ----------------
 
