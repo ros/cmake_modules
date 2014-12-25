@@ -1,3 +1,8 @@
+#
+# NOTICE! This module is deprecated and the FindEigen3.cmake which is
+#         distributed with Eigen should now be used.
+#
+
 ###############################################################################
 #
 # CMake script for finding the Eigen library.
@@ -54,6 +59,12 @@ find_package(PkgConfig)
 pkg_check_modules(PC_EIGEN eigen3)
 set(EIGEN_DEFINITIONS ${PC_EIGEN_CFLAGS_OTHER})
 
+message(WARNING
+  "The FindEigen.cmake Module in the cmake_modules package is deprecated.\n"
+  "Please use the FindEigen3.cmake Module provided with Eigen. "
+  "Change instances of find_package(Eigen) to find_package(Eigen3). "
+  "Check the FindEigen3.cmake Module for the resulting CMake variable names.\n"
+)
 
 find_path(EIGEN_INCLUDE_DIR Eigen/Core
     HINTS ${PC_EIGEN_INCLUDEDIR} ${PC_EIGEN_INCLUDE_DIRS}
