@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.0 (2014-12-25)
+------------------
 * The Eigen module provided by this package has been deprecated.
   There is now a CMake warning to encourage people to use the Module provided by Eigen instead.
 * Contributors: William Woodall
