@@ -2,6 +2,12 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* The Eigen module provided by this package has been deprecated.
+  There is now a CMake warning to encourage people to use the Module provided by Eigen instead.
+* Contributors: William Woodall
+
 0.3.3 (2014-12-23)
 ------------------
 * Added FindPoco.cmake, which migrated from the ros/class_loader repository.
