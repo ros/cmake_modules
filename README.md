@@ -14,6 +14,7 @@ Provided Modules
 4. [**TinyXML**](http://www.grinninglizard.com/tinyxml/) is a simple, small, C++ XML parser.
 5. [**Xenomai**](http://www.xenomai.org/) is a real-time development framework cooperating with the Linux kernel.
 6. [**GSL**] (http://www.gnu.org/software/gsl/) is a numerical library for C and C++ programmers.
+7. [**yaml-cpp**] (https://code.google.com/p/yaml-cpp/) is a C++ library to parse yaml.
 
 Usage
 -----
@@ -68,8 +69,11 @@ find_package(TinyXML REQUIRED)
 ```cmake
 find_package(Xenomai REQUIRED)
 ```
-### FindGSL
+##### GSL
 ```cmake
 find_package(GSL REQUIRED)
 ```
-
+##### yaml-cpp
+```cmake
+find_package(YAML_CPP REQUIRED)
+```
