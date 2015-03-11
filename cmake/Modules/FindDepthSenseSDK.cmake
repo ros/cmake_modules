@@ -2,9 +2,10 @@
 #
 #  Once done these CMake variables are going to be set:
 #
-#       DepthSenseSDK_FOUND - system has DepthSenseSDK
-#       DepthSenseSDK_INCLUDE_DIR - the DepthSenseSDK include directories
-#       DepthSenseSDK_LIBRARIES - link these to use DepthSenseSDK
+#       DepthSenseSDK_FOUND - defined as TRUE if system has DepthSenseSDK, FALSE
+#           otherwise
+#       DepthSenseSDK_INCLUDE_DIR - DepthSenseSDK include directory
+#       DepthSenseSDK_LIBRARIES - DepthSenseSDK libraries
 
 
 if (WIN32)
@@ -34,7 +35,7 @@ else (DepthSenseSDK_INCLUDE_DIR AND DepthSenseSDK_LIBRARIES)
     set (DepthSenseSDK_FOUND OFF)
 endif (DepthSenseSDK_INCLUDE_DIR AND DepthSenseSDK_LIBRARIES)
 
-mark_as_advanced (DepthSenseSDK_FOUND)
+mark_as_advanced (DepthSenseSDK_LOCATION_GUESS)
 if(DepthSenseSDK_FOUND)
     include_directories(${DepthSenseSDK_INCLUDE_DIR})
 else()
