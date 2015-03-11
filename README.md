@@ -14,6 +14,7 @@ Provided Modules
 4. [**TinyXML**](http://www.grinninglizard.com/tinyxml/) is a simple, small, C++ XML parser.
 5. [**Xenomai**](http://www.xenomai.org/) is a real-time development framework cooperating with the Linux kernel.
 6. [**GSL**] (http://www.gnu.org/software/gsl/) is a numerical library for C and C++ programmers.
+7. [**DepthSenseSDK**](http://www.softkinetic.com/Support/Download?EntryId=0) C++ and C SDK for interfacing SoftKinetic stereo-vision cameras.
 
 Usage
 -----
@@ -72,4 +73,7 @@ find_package(Xenomai REQUIRED)
 ```cmake
 find_package(GSL REQUIRED)
 ```
-
+### DepthsenseSDK
+```cmake
+find_package(DepthSenseSDK REQUIRED)
+```
