@@ -13,7 +13,8 @@ Provided Modules
 3. [**TBB**](https://www.threadingbuildingblocks.org/) lets you easily write parallel C++ programs that take full advantage of multicore performance.
 4. [**TinyXML**](http://www.grinninglizard.com/tinyxml/) is a simple, small, C++ XML parser.
 5. [**Xenomai**](http://www.xenomai.org/) is a real-time development framework cooperating with the Linux kernel.
-6. [**GSL**] (http://www.gnu.org/software/gsl/) is a numerical library for C and C++ programmers.
+6. [**GSL**](http://www.gnu.org/software/gsl/) is a numerical library for C and C++ programmers.
+7. [**Gflags**](https://gflags.github.io/gflags/) is a C++ library that implements commandline flags processing with the ability to define flags in the source file in which they are used.
 
 Usage
 -----
@@ -73,3 +74,11 @@ find_package(Xenomai REQUIRED)
 find_package(GSL REQUIRED)
 ```
 
+<<<<<<< HEAD
+=======
+##### Gflags
+
+```cmake
+find_package(Gflags REQUIRED)
+```
+>>>>>>> 3b9dc46... Add FindGflags for supporting Gflags
