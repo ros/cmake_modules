@@ -17,6 +17,7 @@ This repository has branches for minor releases (`0.2-devel`, `0.3-devel`, `0.4-
  - ROS Indigo
 - `0.4-devel`:
  - ROS Jade
+ - ROS Kinetic
 
 This mapping will be kept up-to-date in the `README.md` on the default branch.
 
