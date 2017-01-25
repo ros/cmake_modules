@@ -25,6 +25,7 @@ Provided Modules
 ----------------
 
 1. [**NumPy**](http://www.numpy.org/) is the fundamental package for scientific computing with Python.
+1. [**Octomap**](http://octomap.github.io) is an Efficient Probabilistic 3D Mapping Framework Based on Octrees. Contains the main OctoMap library, the viewer octovis, and dynamicEDT3D.
 1. [**TBB**](https://www.threadingbuildingblocks.org/) lets you easily write parallel C++ programs that take full advantage of multicore performance.
 1. [**TinyXML**](http://www.grinninglizard.com/tinyxml/) is a simple, small, C++ XML parser.
 1. [**Xenomai**](http://www.xenomai.org/) is a real-time development framework cooperating with the Linux kernel.
@@ -75,6 +76,12 @@ find_package(Eigen REQUIRED)
 
 ```cmake
 find_package(NUMPY REQUIRED)
+```
+
+##### Octomap
+
+```cmake
+find_package(octomap REQUIRED)
 ```
 
 ##### TBB
