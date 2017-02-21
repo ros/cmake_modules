@@ -2,6 +2,13 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add FindTinyXML2 module (`#42 <https://github.com/ros/cmake_modules/issues/42>`_)
+  Signed-off-by: Dmitry Rozhkov <dmitry.rozhkov@linux.intel.com>
+* Add FindGflags for supporting Gflags
+* Contributors: Dave Coleman, Dmitry Rozhkov, William Woodall
+
 0.4.0 (2014-12-25)
 ------------------
 * The Eigen module provided by this package has been deprecated.
