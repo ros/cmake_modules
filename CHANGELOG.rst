@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.1 (2017-02-21)
+------------------
 * Add FindTinyXML2 module (`#42 <https://github.com/ros/cmake_modules/issues/42>`_)
   Signed-off-by: Dmitry Rozhkov <dmitry.rozhkov@linux.intel.com>
 * Add FindGflags for supporting Gflags
