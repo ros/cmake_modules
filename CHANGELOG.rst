@@ -2,6 +2,15 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Changed FindPoco to use 'd' suffix only when debug libraries are present (`#50 <https://github.com/ros/cmake_modules/issues/50>`_)
+  * Recent versions of Debian and Ubuntu (beginning with Stretch and Bionic respectively) do not provide separate debug library versions of Poco.
+  * The refactored debug check now actually verifies that a d-suffixed library exists.
+  * If not it falls back to using the non-suffixed version of the library which may or may not include debug symbols.
+* add note about ROS Lunar and future versioning schemes
+* Contributors: Steven! Ragnarök, William Woodall
+
 0.4.1 (2017-02-21)
 ------------------
 * Add FindTinyXML2 module (`#42 <https://github.com/ros/cmake_modules/issues/42>`_)
