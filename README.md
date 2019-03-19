@@ -101,7 +101,7 @@ find_package(TinyXML REQUIRED)
 find_package(Xenomai REQUIRED)
 ```
 
-#### FindGSL
+##### FindGSL
 
 ```cmake
 find_package(GSL REQUIRED)
