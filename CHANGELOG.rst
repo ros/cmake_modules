@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.2 (2019-03-19)
+------------------
 * Changed FindPoco to use 'd' suffix only when debug libraries are present (`#50 <https://github.com/ros/cmake_modules/issues/50>`_)
   * Recent versions of Debian and Ubuntu (beginning with Stretch and Bionic respectively) do not provide separate debug library versions of Poco.
   * The refactored debug check now actually verifies that a d-suffixed library exists.

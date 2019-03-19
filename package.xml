@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>cmake_modules</name>
-  <version>0.4.1</version>
+  <version>0.4.2</version>
   <description>A common repository for CMake Modules which are not distributed with CMake but are commonly used by ROS packages.</description>
 
   <maintainer email="william@osrfoundation.org">William Woodall</maintainer>
