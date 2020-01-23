@@ -2,6 +2,11 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump CMake version to avoid CMP0048 author warning (`#51 <https://github.com/ros/cmake_modules/issues/51>`_)
+* Contributors: Shane Loretz
+
 0.4.2 (2019-03-19)
 ------------------
 * Changed FindPoco to use 'd' suffix only when debug libraries are present (`#50 <https://github.com/ros/cmake_modules/issues/50>`_)
