@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.0 (2020-01-23)
+------------------
 * Bump CMake version to avoid CMP0048 author warning (`#51 <https://github.com/ros/cmake_modules/issues/51>`_)
 * Contributors: Shane Loretz
 
