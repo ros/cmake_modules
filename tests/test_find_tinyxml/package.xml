@@ -4,9 +4,11 @@
   <version>0.0.0</version>
   <description>Test package to find TinyXML</description>
 
-  <maintainer email="william@osrfoundation.org">William Woodall</maintainer>
+  <maintainer email="mabel@openrobotics.org">Mabel Zhang</maintainer>
 
   <license>BSD</license>
+
+  <author email="william@osrfoundation.org">William Woodall</author>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>cmake_modules</build_depend>

@@ -4,7 +4,7 @@
   <version>0.5.0</version>
   <description>A common repository for CMake Modules which are not distributed with CMake but are commonly used by ROS packages.</description>
 
-  <maintainer email="william@osrfoundation.org">William Woodall</maintainer>
+  <maintainer email="mabel@openrobotics.org">Mabel Zhang</maintainer>
 
   <license>BSD</license>
 
