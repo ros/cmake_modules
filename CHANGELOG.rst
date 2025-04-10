@@ -2,6 +2,12 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update maintainers (`#53 <https://github.com/ros/cmake_modules/issues/53>`_)
+* 0.5 Noetic release only (`#52 <https://github.com/ros/cmake_modules/issues/52>`_)
+* Contributors: Mabel Zhang, Shane Loretz
+
 0.5.0 (2020-01-23)
 ------------------
 * Bump CMake version to avoid CMP0048 author warning (`#51 <https://github.com/ros/cmake_modules/issues/51>`_)
