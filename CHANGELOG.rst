@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.1 (2025-04-10)
+------------------
 * Update maintainers (`#53 <https://github.com/ros/cmake_modules/issues/53>`_)
 * 0.5 Noetic release only (`#52 <https://github.com/ros/cmake_modules/issues/52>`_)
 * Contributors: Mabel Zhang, Shane Loretz
