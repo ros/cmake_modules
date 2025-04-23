@@ -1,12 +1,17 @@
 # Locate the include paths and libraries for the UUID libraries. On
-# Windows this locates the Rpcrt4 library
+# Windows this locates the Rpcrt4 library. On macOS uuid is provided
+# by the the macOS SDK, so it is always indicated as found
 #
 # UUID_FOUND - was libuuid (Linux or OSX) or Rpcrt4 (Windows) found
-# UUID_INCLUDE_DIRS - path to the UUID include files. On Windows this variable
+# UUID_INCLUDE_DIRS - path to the UUID include files. On Windows and macOS this variable
 # is left empty, but you should still add it to your CMakeLists.txt to ensure
 # portability
 # UUID_LIBRARIES - full path to the libraries
-if(WIN32)
+if(APPLE)
+  set(UUID_FOUND true)
+  set(UUID_INCLUDE_DIRS "")
+  set(UUID_LIBRARIES "")
+elseif(WIN32)
   find_library(UUID_LIBRARIES NAMES Rpcrt4 PATH)
 
   if(UUID_LIBRARIES)
