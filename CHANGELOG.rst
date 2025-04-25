@@ -2,8 +2,8 @@
 Changelog for package cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.2 (2025-04-25)
+------------------
 * Do not put location of macOS SDK in UUID_INCLUDE_DIRS on macOS (`#54 <https://github.com/ros/cmake_modules/issues/54>`_)
 * Contributors: Silvio Traversaro
 
